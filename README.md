@@ -16,20 +16,38 @@ See more details: <a href="http://www.talangsoft.org/2015/02/21/module_architect
 ### Create a book
 POST http://localhost:8080/api/books
 payload:
-{ "author":"Tamas Lang","title":"Spring app architecture","isbn":null }
+{ "author":"Tamas Lang","title":"Spring app architecture","isbn":"isbn0123" }
 response:
 201 Created with header: Location : http://localhost:8080/api/books/isbn1001
+curl example:
+```
+curl -i \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-HTTP-Method-Override: PUT" \
+    -X POST -d '{ "author":"Tamas Lang","title":"Spring app architecture","isbn":"null" }'\
+    http://localhost:8080/api/books
+```
+
 
 ### Get a book by id (isbn)
-GET http://localhost:8080/api/books/isbn1001
+GET http://localhost:8080/api/books/isbn1000
 response:
 { "author":"Tamas Lang","title":"Spring app architecture","isbn":null }
+curl example:
+```
+curl -i http://localhost:8080/api/books/isbn1000
+```
 
 ### Get all books
 GET http://localhost:8080/api/books
 response:
 [{ "author":"William Shakespeare","title":"Hamlet","isbn":null },
  { "author":"Paolo Giordani","title":"La solitudine dei numeri primi","isbn":null }]
+curl example:
+```
+curl -i http://localhost:8080/api/books
+```
 
 ### Update a book
 PUT http://localhost:8080/api/books/isbn1001
@@ -37,6 +55,15 @@ payload:
 { "author":"Tamas Lang","title":"Spring app architecture","isbn":"isbn1001" }
 response:
 200 OK
+curl example:
+```
+curl -i \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-HTTP-Method-Override: PUT" \
+    -X PUT -d '{ "author":"Tamas Lang","title":"Spring UPDATED app architecture","isbn":"isbn0123" }'\
+    http://localhost:8080/api/books/isbn1000
+```
 
 ### Get by author
 GET http://localhost:8080/api/books?author=William
