@@ -59,6 +59,7 @@
 								<li>Component tests</li>
 								<li>E2E tests</li>
 								<li>Maintenance of tests</li>
+								<li>For further reading</li>
 							</ul>
 						</td>
 						<td>
@@ -101,7 +102,7 @@
 						We are developing a service for the customer!
 					</p>
 					<h4>
-					MTBF vs MTTR 
+					MTBF vs MTTR
 					</h4>
 					<p>
 						MTBF: Mean Time Between Failures
@@ -122,39 +123,49 @@
 
 				<section>
 					<h2>Integration tests</h2>
-					<p>
-					Testing one 'modul' of a micro service. With real dependencies. One modul often an interface.
-					</p>
-					<p>
-					Testing one 'modul' of a micro service. With real dependencies.
-					</p>
-					<p>
-					Can be implemented with unit test tools, but need an environment.
-					</p>
-					<p>
-					Use if you can't trust in your 3th party
-					</p>
-					<p>
-					High complexity because of moveing parts.
-					</p>
+					<table>
+						<tr>
+							<td style="width : 50%">
+								<p>
+									<img style="vertical-align: top" src="img/integrationTests.png" width="100%" height="100%">
+								</p>
+							</td>
+							<td style="font-size : 80%">
+								Testing one 'modul' of a micro service. With real dependencies. One modul is often an interface.
+								<p>
+								Testing one 'modul' of a micro service. With real dependencies.
+								</p>
+								<p>
+								Can be implemented with unit test tools, but need an environment.
+								</p>
+								<p>
+								Use if you can't trust in your 3rd party
+								</p>
+								<p>
+								High environment complexity because of moveing parts.
+								</p>
+							</td>
+							</tr>
+						</table>
 				</section>
-
 
 				<section>
 					<h2>CDC tests</h2>
 					<p>
-					Testing one micro service with mocked dependencies.
+					Testing one micro service against contracts.
 					</p>
 					<p>
-					It ensure the health of the whole system. The output can be a compatibility matrix.
+					It ensure the health of the whole system.
+					</p>
+					<p>
+					The output can be a compatibility matrix.
 					</p>
 				</section>
-
 
 				<section>
 					<h2>Component tests</h2>
 					<p>
-					Testing one micro service with mocked dependencies.
+					Testing one micro service test doubles dependencies.
 					</p>
 					<p>
 					So we have to deploy the service into a mocked environment and configure it to use them.
@@ -163,25 +174,43 @@
 
 				<section>
 					<h2>E2E tests</h2>
-					
-					<p>Test Journeys, Not Stories</p>
-					<p>
-					If you create e2e tests for all stories, you may create inverse pyramid. (healthy: 10-100 for the whole system)
-					</p>
-					too many? too slow? brittle? -> normalization of deviance
-					</p>
-					<p>
-					Testing the whole system with all 3th party.
-					</p>
-					<p>
-					High complexity because of moveing parts.
-					</p>
+
+					<table>
+						<tr>
+							<td style="width : 50%">
+								<img style="vertical-align: top"  data-src="img/e2eFan.png" width="100%" height="100%"/>
+							</td>
+							<td style="font-size : 80%" >
+								<p>Test Journeys, Not Stories</p>
+								<p>
+								If you create e2e tests for all stories, you may create inverse pyramid. (healthy: 10-100 for the whole system)
+								</p>
+								too many? too slow? brittle? -> normalization of deviance
+								</p>
+								<p>
+								Testing the whole system with all 3th party.
+								</p>
+								<p>
+								High complexity because of moveing parts.
+								</p>
+							</td>
+						</tr>
+					</table>
 				</section>
 
 				<section>
 					<h2>Maintenance of tests</h2>
-					<p>if a test brittle, then remove it!</p>
+					<p>if a test is brittle, then remove it!</p>
 					<p>always try to replace test with one or more tests in lower level</p>
+				</section>
+
+				<section>
+					<h2>for further reading</h2>
+					<ul>
+						<li><a href="https://www.oreilly.com/learning/building-microservices-testing">Building Micreservices testing</a></li>
+						<li><a href="http://martinfowler.com/articles/microservice-testing">Martin Fowler microservice-testing</a></li>
+						<li><a href="https://github.com/realestate-com-au/pact/wiki/News,-blogs,-videos-and-articles">News,-blogs,-videos-and-articles</a></li>
+					</ul>
 				</section>
 
 				<section>
@@ -200,9 +229,50 @@
 
 				<section>
 					<h2>pact</h2>
-					<p>
+					<p style="font-size : 80%">
 						A cdc tool. Can generate mock server from contract definitions.
 					</p>
+					<code>
+<pre style="font-size : 30%">
+{
+  "provider": {
+    "name": "Event API"
+  },
+  "consumer": {
+    "name": "Source System"
+  },
+  "interactions": [
+    {
+      "description": "A POST request with an event",
+      "request": {
+        "method": "post",
+        "path": "/events",
+        "body": {
+          "eventId": "7622cb68-3ee5-4f93-a32b-da82f3ff95b5",
+          "timestamp": "2014-05-13 02:03:33 UTC",
+          "host": null,
+          "remoteAddress": null,
+          "eventType": null,
+          "user": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecificationVersion": "1.0.0"
+  }
+}
+</pre>
+					</code>
 				</section>
 
 				<section>
