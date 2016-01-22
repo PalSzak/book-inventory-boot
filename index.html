@@ -40,7 +40,7 @@
 			<div class="slides">
 				<section>
 					<h1>Testing Microservices</h1>
-					<h3>Interpretting the Test Piramid</h3>
+					<h3>Interpreting the Test Piramid</h3>
 				</section>
 
 				<section>
@@ -50,9 +50,9 @@
 						<td>
 						<h4>Theory</h4>
 							<ul>
-								<li>What do tests for?</li>
+								<li>What are tests for?</li>
 								<li>What is Test Pyramid?</li>
-								<li>How many tests we need?</li>
+								<li>How many tests do we need?</li>
 								<li>Testing after production</li>
 								<li>Integration tests</li>
 								<li>CDC tests</li>
@@ -76,7 +76,7 @@
 				</section>
 
 				<section>
-					<h2>What do tests for?</h2>
+					<h2>What are tests for?</h2>
 					<img  data-src="img/test_categories.png"  width="80%" height="80%"/>
 				</section>
 
@@ -97,7 +97,7 @@
 
 
 				<section>
-					<h2>How many tests we need?</h2>
+					<h2>How many tests do we need?</h2>
 					<p>
 						We are developing a service for the customer!
 					</p>
@@ -131,18 +131,17 @@
 								</p>
 							</td>
 							<td style="font-size : 80%">
-								Testing one 'modul' of a micro service. With real dependencies. One modul is often an interface.
 								<p>
-								Testing one 'modul' of a micro service. With real dependencies.
+								Testing one 'module' of a micro service. With real dependencies. One module is often an interface.
 								</p>
 								<p>
-								Can be implemented with unit test tools, but need an environment.
+								Can be implemented with unit test tools, but an environment needed.
 								</p>
 								<p>
 								Use if you can't trust in your 3rd party
 								</p>
 								<p>
-								High environment complexity because of moveing parts.
+								High environment complexity because of moving parts.
 								</p>
 							</td>
 							</tr>
@@ -155,7 +154,7 @@
 					Testing one micro service against contracts.
 					</p>
 					<p>
-					It ensure the health of the whole system.
+					It ensures the health of the whole system.
 					</p>
 					<p>
 					The output can be a compatibility matrix.
@@ -165,7 +164,7 @@
 				<section>
 					<h2>Component tests</h2>
 					<p>
-					Testing one micro service test doubles dependencies.
+					Testing one micro service with test doubles dependencies.
 					</p>
 					<p>
 					So we have to deploy the service into a mocked environment and configure it to use them.
@@ -188,10 +187,10 @@
 								too many? too slow? brittle? -> normalization of deviance
 								</p>
 								<p>
-								Testing the whole system with all 3th party.
+								Testing the whole system with all 3rd party.
 								</p>
 								<p>
-								High complexity because of moveing parts.
+								High complexity because of moving parts.
 								</p>
 							</td>
 						</tr>
@@ -200,8 +199,8 @@
 
 				<section>
 					<h2>Maintenance of tests</h2>
-					<p>if a test is brittle, then remove it!</p>
-					<p>always try to replace test with one or more tests in lower level</p>
+					<p>If a test is brittle, then remove it!</p>
+					<p>Always try to replace test with one or more tests in lower level</p>
 				</section>
 
 				<section>
